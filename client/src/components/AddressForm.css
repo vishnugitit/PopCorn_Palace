@@ -1,0 +1,163 @@
+.address-container{
+ min-height:100vh;
+ background:#f8fafc;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+}
+
+.logo-section{
+ text-align:center;
+ margin-bottom:20px;
+}
+
+.logo{
+ width:80px;
+ height:80px;
+ object-fit:contain;
+}
+
+.logo-section h1{
+ color:#ff9800;
+ font-size:28px;
+ font-weight:700;
+ margin-top:10px;
+}
+
+.progress-wrapper{
+ width:100%;
+ max-width:650px;
+ margin-bottom:20px;
+}
+
+.progress-track{
+ height:10px;
+ background:#e5e7eb;
+ border-radius:30px;
+ overflow:hidden;
+}
+
+.progress-fill{
+ height:100%;
+ background:#ff9800;
+ transition:.4s;
+}
+
+.progress-wrapper span{
+ display:block;
+ text-align:right;
+ margin-top:8px;
+ font-size:14px;
+}
+
+.address-card{
+ width:100%;
+ max-width:650px;
+ background:#fff;
+ padding:30px;
+ border-radius:20px;
+ box-shadow:
+ 0 15px 40px rgba(0,0,0,.08);
+}
+
+.address-card h2{
+ margin-bottom:8px;
+}
+
+.address-card p{
+ color:#666;
+ margin-bottom:20px;
+}
+
+.input-group{
+ display:flex;
+ align-items:flex-start;
+ gap:12px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ padding:14px;
+ margin-bottom:12px;
+}
+
+.icon{
+ color:#ff9800;
+ margin-top:4px;
+}
+
+.input-group input,
+.input-group textarea{
+ width:100%;
+ border:none;
+ outline:none;
+ resize:none;
+ font-size:15px;
+}
+
+.input-group textarea{
+ min-height:100px;
+}
+
+.error{
+ color:#ef4444;
+ display:block;
+ margin-bottom:10px;
+ font-size:13px;
+}
+
+.button-group{
+ display:flex;
+ gap:15px;
+ margin-top:20px;
+}
+
+.back-btn,
+.next-btn{
+ flex:1;
+ border:none;
+ padding:15px;
+ border-radius:12px;
+ cursor:pointer;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:10px;
+ font-weight:600;
+ transition:.3s;
+}
+
+.back-btn{
+ background:#e5e7eb;
+}
+
+.next-btn{
+ background:#ff9800;
+ color:white;
+}
+
+.back-btn:hover,
+.next-btn:hover{
+ transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+ .address-card{
+  padding:20px;
+ }
+
+ .button-group{
+  flex-direction:column;
+ }
+
+ .logo{
+  width:60px;
+  height:60px;
+ }
+
+ .logo-section h1{
+  font-size:22px;
+ }
+
+}

@@ -1,0 +1,180 @@
+.locations-page{
+  padding:90px 5%;
+  background:#fffdf8;
+}
+
+.locations-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.locations-header h2{
+  font-size:2.8rem;
+  color:#f97316;
+  margin-bottom:10px;
+}
+
+.locations-header p{
+  color:#666;
+  font-size:1rem;
+}
+
+.locations-grid{
+  max-width:1300px;
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(320px,1fr));
+
+  gap:30px;
+}
+
+.location-card{
+  background:white;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  transition:.3s;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.08);
+}
+
+.location-card:hover{
+  transform:
+  translateY(-8px);
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.12);
+}
+
+.location-top{
+  background:
+  linear-gradient(
+    135deg,
+    #f97316,
+    #fb923c
+  );
+
+  color:white;
+
+  text-align:center;
+
+  padding:30px 20px;
+}
+
+.location-top svg{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.location-top h3{
+  font-size:1.8rem;
+}
+
+.location-body{
+  padding:25px;
+}
+
+.location-body p{
+  display:flex;
+  align-items:flex-start;
+
+  gap:12px;
+
+  margin-bottom:18px;
+
+  color:#444;
+
+  line-height:1.6;
+}
+
+.location-body svg{
+  color:#f97316;
+  min-width:18px;
+}
+
+.location-card button{
+  width:calc(100% - 40px);
+
+  margin:0 20px 20px;
+
+  border:none;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  background:#f97316;
+
+  color:white;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.location-card button:hover{
+  background:#ea580c;
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+  .locations-grid{
+    grid-template-columns:
+    repeat(2,1fr);
+  }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+  .locations-page{
+    padding:70px 20px;
+  }
+
+  .locations-header h2{
+    font-size:2rem;
+  }
+
+  .locations-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* Small Mobile */
+
+@media(max-width:480px){
+
+  .locations-header h2{
+    font-size:1.7rem;
+  }
+
+  .location-card{
+    border-radius:18px;
+  }
+
+  .location-top{
+    padding:25px 15px;
+  }
+
+  .location-top h3{
+    font-size:1.5rem;
+  }
+
+  .location-body{
+    padding:20px;
+  }
+
+}

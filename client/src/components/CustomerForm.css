@@ -1,0 +1,148 @@
+@import url(
+'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'
+);
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:'Poppins',sans-serif;
+}
+
+.customer-container{
+ min-height:100vh;
+ background:#f7f8fc;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.logo-section{
+ text-align:center;
+ margin-bottom:20px;
+}
+
+.logo{
+ width:80px;
+ height:80px;
+ object-fit:contain;
+ margin-bottom:10px;
+}
+
+.logo-section h1{
+ font-size:28px;
+ font-weight:700;
+ color:#ff9800;
+}
+
+.progress-wrapper{
+ width:100%;
+ max-width:500px;
+ margin-bottom:20px;
+}
+
+.progress-track{
+ height:10px;
+ background:#e5e7eb;
+ border-radius:30px;
+ overflow:hidden;
+}
+
+.progress-fill{
+ height:100%;
+ background:#ff9800;
+ transition:all .5s ease;
+}
+
+.progress-wrapper span{
+ display:block;
+ margin-top:8px;
+ text-align:right;
+ font-size:14px;
+}
+
+.customer-card{
+ width:100%;
+ max-width:500px;
+ background:white;
+ border-radius:20px;
+ padding:30px;
+ box-shadow:
+ 0 10px 30px rgba(0,0,0,.08);
+}
+
+.customer-card h2{
+ margin-bottom:10px;
+}
+
+.customer-card p{
+ color:#666;
+ margin-bottom:20px;
+}
+
+.input-group{
+ display:flex;
+ align-items:center;
+ border:1px solid #ddd;
+ border-radius:12px;
+ margin-bottom:12px;
+ padding:0 15px;
+}
+
+.icon{
+ color:#999;
+}
+
+.input-group input{
+ width:100%;
+ border:none;
+ outline:none;
+ padding:15px;
+}
+
+.error{
+ color:red;
+ display:block;
+ margin-bottom:10px;
+}
+
+.next-btn{
+ width:100%;
+ border:none;
+ cursor:pointer;
+ background:#ff9800;
+ color:white;
+ padding:15px;
+ border-radius:12px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:10px;
+ font-size:16px;
+ font-weight:600;
+ margin-top:15px;
+ transition:.3s;
+}
+
+.next-btn:hover{
+ transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+ .customer-card{
+  padding:20px;
+ }
+
+ .logo{
+  width:60px;
+  height:60px;
+ }
+
+ .logo-section h1{
+  font-size:22px;
+ }  
+
+}
