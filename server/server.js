@@ -56,3 +56,19 @@ app.get("/test-db", async (req, res) => {
     });
   }
 });
+
+app.get("/test-mail", async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: "jangamvishnuvardhan@gmail.com",
+      subject: "Mail Test",
+      text: "Mail working successfully"
+    });
+
+    res.send("Mail Sent");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err.message);
+  }
+});
