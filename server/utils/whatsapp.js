@@ -49,7 +49,7 @@ async function connectWhatsApp() {
           );
 
           setTimeout(() => {
-            connectWhatsApp();
+            // connectWhatsApp();
           }, 5000);
         }
       }
