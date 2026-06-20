@@ -43,3 +43,16 @@ app.listen(
     );
   }
 );
+const db = require("./config/db");
+
+app.get("/test-db", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT 1 AS test");
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+      code: err.code
+    });
+  }
+});
