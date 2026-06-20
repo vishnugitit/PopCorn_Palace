@@ -14,50 +14,92 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+
+// SMTP Transport
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
 
-// TEST ROOT
-app.get("/", (req, res) => {
-  res.send("Server Running");
+// Verify SMTP on startup
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ SMTP ERROR:", error);
+  } else {
+    console.log("✅ SMTP READY");
+  }
 });
 
-// TEST DB
+// Root Route
+app.get("/", (req, res) => {
+  res.send("🚀 Server Running");
+});
+
+// DB Test Route
 app.get("/test-db", async (req, res) => {
   try {
     const [rows] = await db.query("SELECT 1 AS test");
-    res.json(rows);
+    res.json({
+      success: true,
+      data: rows,
+    });
   } catch (err) {
-    res.status(500).json(err);
+    console.error("DB ERROR:", err);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
   }
 });
 
-// TEST MAIL
+// Mail Test Route
 app.get("/test-mail", async (req, res) => {
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: "Mail Test",
-      text: "Mail working successfully",
-    });
+    const result = await Promise.race([
+      transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        subject: "🍿 Popcorn Palace Mail Test",
+        text: "Mail working successfully from Render",
+      }),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Mail timeout after 15 seconds")), 15000)
+      ),
+    ]);
 
-    res.send("Mail Sent Successfully");
+    console.log("MAIL SENT:", result.messageId);
+
+    res.json({
+      success: true,
+      message: "Mail Sent Successfully",
+      messageId: result.messageId,
+    });
   } catch (err) {
-    console.error("MAIL ERROR:", err);
-    res.status(500).json(err);
+    console.error("❌ MAIL ERROR:", err);
+
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      code: err.code,
+    });
   }
 });
 
+// API Routes
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server Running on ${process.env.PORT || 5000}`);
+// Start Server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server Running on Port ${PORT}`);
 });
